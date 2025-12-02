@@ -1,277 +1,132 @@
-# SimDrei ComShop - Internet Café & Gaming Lounge
+# SimDrei ComShop - Internet Café & Gaming Lounge Website
 
-A modern, fully responsive Single Page Application (SPA) for a premier internet café and gaming lounge business built with vanilla JavaScript, Bootstrap 5, and Express.js.
+A responsive Single Page Application (SPA) for an internet café offering gaming stations, memberships, and event bookings.
 
-## 📋 Project Overview
+## 🎮 Features
 
-SimDrei ComShop is a professional website for an internet café offering premium gaming stations, workspaces, and a vibrant gaming community. The site features gaming station browsing, membership packages, event booking, and customer contact capabilities—all without page reloads.
-
-## ✨ Features
-
-- **📱 Mobile Responsive Design** - Fully responsive across all devices using Bootstrap 5
-- **⚡ Single Page Application** - Seamless navigation without page reloads
-- **🎨 Bootswatch Darkly Theme** - Modern, professional dark UI styling
-- **🌙 Dark Gaming Theme** - Professional dark interface (#1a1a1a background, #00d4ff cyan accents)
-- **🎮 Gaming Stations** - Multiple station categories with pricing in Philippine Pesos
-- **💰 Flexible Pricing** - Services in PHP (₱275-₱715/hr for gaming)
-- **👥 Team Showcase** - Meet the gaming community team
-- **📦 Membership Packages** - Multiple pricing tiers and services
-- **🎫 Booking & Contact System** - Functional forms for bookings and inquiries
-- **⭐ Testimonials** - Customer testimonials on homepage
-- **💬 Business Hours & Info** - Complete contact information and operating hours
-- **🏢 Special Offers** - Promotions and group discounts
+- **Mobile Responsive** - Works on all devices (Bootstrap 5)
+- **Single Page App** - No page reloads, smooth navigation
+- **Dark Gaming Theme** - Modern dark UI with cyan accents
+- **Gaming Stations** - Browse 4 station types with pricing in Philippine Pesos
+- **Membership Packages** - 6 service options (hourly, daily, monthly rates)
+- **Team & Testimonials** - Meet the team and see customer reviews
+- **Contact & Booking** - Functional forms for inquiries and reservations
+- **Business Info** - Operating hours and special offers
 
 ## 🛠️ Tech Stack
 
 - **Frontend**: Vanilla JavaScript, HTML5, CSS3, Bootstrap 5
-- **Styling**: Bootswatch Darkly theme
 - **Backend**: Express.js (Node.js)
-- **Server**: Development server on port 5000
-- **No Build Tools**: Runs directly without Webpack, Vite, or similar
+- **Styling**: Bootswatch Darkly theme
+- **Server**: Runs on port 5000
 
 ## 📁 Project Structure
 
 ```
 Quiz-1/
-├── src/
-│   ├── components/
-│   │   ├── LayoutComponents.jsx    # Header & Footer
-│   │   └── CardComponents.jsx      # Reusable Card Components
-│   ├── pages/
-│   │   ├── HomePage.jsx            # Landing page with hero & testimonials
-│   │   ├── ProductsPage.jsx        # Product catalog (archived)
-│   │   ├── ServicesPage.jsx        # Services listing
-│   │   ├── TeamPage.jsx            # Team members showcase
-│   │   └── ContactPage.jsx         # Contact form & info
-│   ├── data/
-│   │   └── dummyData.js            # All dummy data
-│   ├── styles/
-│   │   ├── global.css              # Global styles
-│   │   └── App.css                 # App-specific styles
-│   ├── App.jsx                     # Main App component (archived)
-│   └── main.jsx                    # React entry point (archived)
-├── index.html                      # Main HTML entry point with embedded JS
-├── server.js                       # Express server for SPA
-├── package.json                    # Dependencies & scripts
-└── README.md                       # This file
+├── index.html          # Main page (contains all JavaScript)
+├── server.js           # Express server
+├── package.json        # Dependencies
+├── README.md           # This file
+└── src/                # Supporting files (for reference)
+    ├── components/
+    ├── pages/
+    ├── data/
+    └── styles/
 ```
 
-## 🚀 Getting Started
+## 🚀 Quick Start
 
 ### Prerequisites
-
-- **Node.js** (v14 or higher)
-- **npm** (comes with Node.js)
+- Node.js (v14+)
+- npm
 
 ### Installation
 
-1. **Clone the repository** (from GitLab):
-   ```bash
-   git clone https://gitlab.com/YOUR-USERNAME/YOUR-PROJECT.git
-   cd YOUR-PROJECT
-   ```
-
-2. **Install dependencies**:
-   ```bash
-   npm install
-   ```
-
-3. **Start the development server**:
-   ```bash
-   npm run dev
-   ```
-
-4. **Open in browser**:
-   - Navigate to `http://localhost:5000`
-   - The application will load automatically
-
-## 📦 Available Scripts
-
-- `npm run dev` - Starts the Express development server on port 5000
-- `npm run build` - Placeholder build script (no build tool required)
-- `npm start` - Alternative command to start the server
-
-## 🌐 Pages & Features
-
-### Home Page
-- Hero section with call-to-action buttons
-- About section explaining the business
-- Statistics dashboard (30+ stations, 5K+ members)
-- Customer testimonials with ratings
-- Featured services section
-
-### Stations Page
-- Browse 4 gaming station categories:
-  - **Ultra Gaming**: ₱715/hr (RTX 4090, i9-13900K)
-  - **Pro Gaming**: ₱495/hr (RTX 4080, i7-13700K)
-  - **Casual Gaming**: ₱275/hr (RTX 3070, i5-12600K)
-  - **Workstations**: ₱330/hr (RTX 2080, i7-11700)
-- Real-time availability status
-
-### Services Page
-- 6 service packages with pricing:
-  - Hourly rates starting at ₱275/hr
-  - Daily passes at ₱2,200
-  - Monthly membership at ₱8,250
-  - Tournament hosting from ₱27,500
-  - Group sessions from ₱4,350
-  - Food & beverage service
-
-### Team Page
-- 4 team member profiles
-- Specializations and roles
-- Core gaming values
-
-### Contact Page
-- Dual-mode form (messaging + booking)
-- Business hours display (Mon-Fri 2PM-2AM, Sat 12PM-3AM, Sun 12PM-12AM)
-- Special offers and promotions
-- FAQ section
-- Contact information (email, phone, address)
-
-## 💾 Data Structure
-
-All data is stored in `src/data/dummyData.js` including:
-- Business information
-- 4 team members with specializations
-- 4 gaming station types with pricing
-- 6 service packages with features
-- 4 customer testimonials with ratings
-
-## 📝 How to Update Content
-
-1. **Modify prices**: Edit `businessData.services` in `src/data/dummyData.js`
-2. **Change team members**: Update `teamMembers` array
-3. **Add testimonials**: Add objects to `testimonials` array
-4. **Update business info**: Modify `businessData` object
-5. **Change styling**: Edit `src/styles/global.css` or `src/styles/App.css`
-
-## 🎨 Customization
-
-### Change Colors
-- Primary dark background: `#1a1a1a` (in CSS)
-- Accent color (cyan): `#00d4ff`
-- Modify in `src/styles/global.css` or `index.html`
-
-### Change Theme
-- Currently using Bootstrap 5 with Bootswatch Darkly
-- Modify Bootstrap CDN link in `index.html`
-
-## 🔧 Configuration
-
-### Server Port
-- Default: `5000`
-- Change in `server.js`: `const PORT = process.env.PORT || 5000;`
-- Or set environment variable: `PORT=3000 npm run dev`
-
-## 📱 Responsive Breakpoints
-
-- **Mobile**: < 576px
-- **Tablet**: 576px - 768px
-- **Desktop**: 768px - 992px
-- **Large Desktop**: > 992px
-
-## 🐛 Troubleshooting
-
-### Port Already in Use
 ```bash
-# Kill process on port 5000
-# Windows PowerShell:
-Get-Process -Name node | Stop-Process -Force
+# Clone the repository
+git clone https://github.com/YOUR-USERNAME/SimDrei-ComShop.git
+cd SimDrei-ComShop
 
-# Then restart:
+# Install dependencies
+npm install
+
+# Start the server
 npm run dev
 ```
 
-### Changes Not Showing
-- Hard refresh browser: `Ctrl+Shift+R` (or `Cmd+Shift+R` on Mac)
-- Clear browser cache
+Open `http://localhost:5000` in your browser.
+
+## 📖 Pages
+
+| Page | Description |
+|------|-------------|
+| **Home** | Hero section, about, stats, testimonials |
+| **Stations** | Browse gaming stations (₱275-₱715/hr) |
+| **Services** | Membership packages & pricing |
+| **Team** | Team member profiles |
+| **Contact** | Contact form & business info |
+
+## 💰 Pricing
+
+- **Gaming Stations**: ₱275-₱715/hr
+- **Daily Pass**: ₱2,200
+- **Monthly Membership**: ₱8,250
+- **Tournament Hosting**: From ₱27,500
+- **Group Sessions**: From ₱4,350
+
+## 📝 Quick Updates
+
+To modify content, edit these files:
+- **Prices & Services**: `src/data/dummyData.js`
+- **Styling**: `src/styles/global.css` or inline styles in `index.html`
+- **Business Info**: `businessData` object in `index.html`
+
+## ⚙️ Configuration
+
+### Change Server Port
+Edit `server.js`:
+```javascript
+const PORT = process.env.PORT || 5000;  // Change 5000 to your port
+```
+
+Or use environment variable:
+```bash
+PORT=3000 npm run dev
+```
+
+## 🐛 Troubleshooting
+
+**Port already in use?**
+```powershell
+Get-Process -Name node | Stop-Process -Force
+npm run dev
+```
+
+**Page shows blank?**
+- Press `Ctrl+Shift+R` to hard refresh
+- Check browser console (F12) for errors
+- Verify server is running (check terminal output)
+
+**Changes not showing?**
 - Restart server: `Ctrl+C` then `npm run dev`
+- Clear browser cache
 
-### Browser Shows Blank Page
-- Check browser console for errors (F12)
-- Verify server is running: Check terminal for "🚀 Server is running"
-- Ensure you're on correct port: `http://localhost:5000`
+## 📤 Deploy to GitHub
 
-## 📤 Deploying to GitLab
-
-### Step 1: Initialize Git Repository (if not already done)
 ```bash
-cd c:\Quiz-1
-git init
-git remote add origin https://gitlab.com/YOUR-USERNAME/YOUR-REPOSITORY.git
-```
-
-### Step 2: Add All Files
-```bash
-git add .
-```
-
-### Step 3: Commit Changes
-```bash
-git commit -m "Initial commit: SimDrei ComShop gaming lounge website"
-```
-
-### Step 4: Push to GitLab
-```bash
+git remote add origin https://github.com/YOUR-USERNAME/SimDrei-ComShop.git
+git branch -M main
 git push -u origin main
-```
-
-*Note: If you get an error about 'main' branch, use 'master' instead or check your default branch*
-
-### Step 5: Verify on GitLab
-- Go to your GitLab project
-- Your README will display on the project home page
-- All files will be visible in the repository
-
-## 📋 GitLab Repository Setup
-
-1. **Create new project on GitLab**:
-   - Go to https://gitlab.com/dashboard/projects
-   - Click "New project"
-   - Choose "Create blank project"
-   - Name it `SimDrei-ComShop` or similar
-   - Choose visibility (Private/Public)
-   - Do NOT initialize with README (we have one)
-   - Click "Create project"
-
-2. **Get the repository URL**:
-   - On GitLab project page, click blue "Clone" button
-   - Copy the HTTPS or SSH URL
-
-3. **Push your local project**:
-   ```bash
-   git remote add origin https://gitlab.com/YOUR-USERNAME/SimDrei-ComShop.git
-   git branch -M main
-   git push -u origin main
-   ```
-
-## 🌐 Environment Variables
-
-Create a `.env` file (optional) for:
-```
-PORT=5000
-NODE_ENV=development
 ```
 
 ## 📄 License
 
-This project is created for educational purposes.
+Educational project
 
-## 👤 Author
+## 📞 Contact
 
-Created as a project for an internet café business website.
-
-## 🙏 Acknowledgments
-
-- Bootstrap 5 for responsive framework
-- Bootswatch Darkly for dark theme
-- Express.js for simple server
-- FontAwesome-style emojis for icons
-
-## 📞 Support
-
-For issues or questions about the website, refer to the Contact page or email `info@simdrei-comshop.com`.
+For questions about the website, use the Contact form on the site or email `info@simdrei-comshop.com`
 
 ## 🚀 Getting Started
 
@@ -472,5 +327,6 @@ For questions or issues, please contact:
 **Happy Coding! 🚀**
 
 Created with React 19 and Bootstrap 5
-#   Q u i z - 1 _ D A T A S T A L G O  
+#   Q u i z - 1 _ D A T A S T A L G O 
+ 
  
