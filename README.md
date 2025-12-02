@@ -78,16 +78,17 @@ Open `http://localhost:5000` in your browser.
 ## 📝 Quick Updates
 
 To modify content, edit these files:
-- **Prices & Services**: `src/data/dummyData.js`
-- **Styling**: `src/styles/global.css` or inline styles in `index.html`
+- **Prices & Data**: `src/data/dummyData.js`
+- **Colors & Styling**: `src/styles/global.css` or inline in `index.html`
 - **Business Info**: `businessData` object in `index.html`
 
 ## ⚙️ Configuration
 
 ### Change Server Port
+
 Edit `server.js`:
 ```javascript
-const PORT = process.env.PORT || 5000;  // Change 5000 to your port
+const PORT = process.env.PORT || 5000;  // Change port here
 ```
 
 Or use environment variable:
@@ -104,21 +105,28 @@ npm run dev
 ```
 
 **Page shows blank?**
-- Press `Ctrl+Shift+R` to hard refresh
-- Check browser console (F12) for errors
-- Verify server is running (check terminal output)
+- Hard refresh: `Ctrl+Shift+R`
+- Check browser console: Press `F12`
+- Restart server: `Ctrl+C` then `npm run dev`
 
 **Changes not showing?**
-- Restart server: `Ctrl+C` then `npm run dev`
 - Clear browser cache
+- Restart the server
 
-## 📤 Deploy to GitHub
+## 🌐 Browser Support
 
-```bash
-git remote add origin https://github.com/YOUR-USERNAME/SimDrei-ComShop.git
-git branch -M main
-git push -u origin main
-```
+- Chrome/Chromium (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+- Mobile browsers
+
+## 📱 Responsive Design
+
+Optimized for:
+- Mobile (<576px)
+- Tablet (576px-992px)
+- Desktop (>992px)
 
 ## 📄 License
 
@@ -126,7 +134,7 @@ Educational project
 
 ## 📞 Contact
 
-For questions about the website, use the Contact form on the site or email `info@simdrei-comshop.com`
+Use the Contact form on the website or email `info@simdrei-comshop.com`
 
 ## 🚀 Getting Started
 
