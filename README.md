@@ -472,3 +472,5 @@ For questions or issues, please contact:
 **Happy Coding! 🚀**
 
 Created with React 19 and Bootstrap 5
+#   Q u i z - 1 _ D A T A S T A L G O  
+ 
