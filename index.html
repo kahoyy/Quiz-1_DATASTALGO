@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SimDrei ComShop - Gaming Lounge & Internet Café</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/5.3.0/darkly/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1a1a1a;
+            color: #ecf0f1;
+        }
+        html, body, #root {
+            height: 100%;
+        }
+        .d-flex {
+            display: flex;
+        }
+        .flex-column {
+            flex-direction: column;
+        }
+        .min-vh-100 {
+            min-height: 100vh;
+        }
+        main {
+            flex: 1;
+        }
+        .nav-link {
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .nav-link:hover {
+            color: #00d4ff !important;
+        }
+    </style>
+</head>
+<body>
+    <div id="root" style="display: flex; flex-direction: column; min-height: 100vh;"></div>
+    
+    <script>
+        // Business Data
+        const businessData = {
+            name: 'SimDrei ComShop',
+            tagline: 'Premier Internet Café & Gaming Lounge',
+            description: 'SimDrei ComShop is a modern internet café offering high-performance gaming stations, comfortable workspaces, and a vibrant gaming community.',
+            email: 'info@simdrei-comshop.com',
+            phone: '+1-800-COMSHOP',
+            address: '123 Gaming Avenue, Tech City, TC 12345',
+        };
+
+        const teamMembers = [
+            { id: 1, name: 'Michael Richardson', title: 'Founder & CEO', specialty: 'Business Strategy' },
+            { id: 2, name: 'Sarah Chen', title: 'Operations Manager', specialty: 'Station Management' },
+            { id: 3, name: 'David Martinez', title: 'Events Coordinator', specialty: 'Events & Community' },
+            { id: 4, name: 'Emily Foster', title: 'Customer Service', specialty: 'Customer Support' },
+        ];
+
+        const testimonials = [
+            { id: 1, name: 'Alex Johnson', role: 'Esports Team Lead', message: 'Best gaming stations in the city!', rating: 5 },
+            { id: 2, name: 'Lisa Wang', role: 'Gamer', message: 'Amazing equipment and great atmosphere!', rating: 5 },
+            { id: 3, name: 'Robert Collins', role: 'Student', message: 'Perfect place to work and relax.', rating: 4 },
+            { id: 4, name: 'Maya Patel', role: 'Tournament Winner', message: 'Professional setup and service!', rating: 5 },
+        ];
+
+        const services = [
+            { id: 1, name: 'Hourly Rate', icon: '⏱️', price: 'From ₱275/hr' },
+            { id: 2, name: 'Daily Pass', icon: '📅', price: '₱2,200' },
+            { id: 3, name: 'Monthly Membership', icon: '🎟️', price: '₱8,250' },
+            { id: 4, name: 'Tournament Hosting', icon: '🏆', price: 'From ₱27,500' },
+            { id: 5, name: 'Private Group Sessions', icon: '👥', price: 'From ₱4,350' },
+            { id: 6, name: 'Food & Beverage', icon: '🍔', price: '₱165 - ₱715' },
+        ];
+
+        const stations = [
+            { id: 1, name: 'Ultra Gaming', specs: 'RTX 4090, i9-13900K', price: '₱715/hr' },
+            { id: 2, name: 'Pro Gaming', specs: 'RTX 4080, i7-13700K', price: '₱495/hr' },
+            { id: 3, name: 'Casual Gaming', specs: 'RTX 3070, i5-12600K', price: '₱275/hr' },
+            { id: 4, name: 'Workstations', specs: 'RTX 2080, i7-11700', price: '₱330/hr' },
+        ];
+
+        // App State
+        let currentPage = 'home';
+
+        // Render Functions
+        function renderHeader() {
+            return `
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom border-secondary sticky-top">
+                    <div class="container">
+                        <a class="navbar-brand fw-bold" onclick="changePage('home')" style="cursor: pointer;">
+                            <span style="font-size: 1.5rem; color: #00d4ff;">⚡</span> SimDrei ComShop
+                        </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <div class="navbar-nav ms-auto">
+                                <a class="nav-link ${currentPage === 'home' ? 'active' : ''}" onclick="changePage('home')">Home</a>
+                                <a class="nav-link ${currentPage === 'stations' ? 'active' : ''}" onclick="changePage('stations')">Stations</a>
+                                <a class="nav-link ${currentPage === 'services' ? 'active' : ''}" onclick="changePage('services')">Services</a>
+                                <a class="nav-link ${currentPage === 'team' ? 'active' : ''}" onclick="changePage('team')">Team</a>
+                                <a class="nav-link ${currentPage === 'contact' ? 'active' : ''}" onclick="changePage('contact')">Contact</a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            `;
+        }
+
+        function renderFooter() {
+            const year = new Date().getFullYear();
+            return `
+                <footer class="bg-dark text-light py-5 border-top border-secondary mt-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3 mb-4">
+                                <h5 class="mb-3"><span style="color: #00d4ff;">⚡</span> ${businessData.name}</h5>
+                                <p class="text-muted small">${businessData.tagline}</p>
+                            </div>
+                            <div class="col-md-3 mb-4">
+                                <h6 class="mb-3">Quick Links</h6>
+                                <ul class="list-unstyled text-muted small">
+                                    <li><a href="#" class="text-muted text-decoration-none">Stations</a></li>
+                                    <li><a href="#" class="text-muted text-decoration-none">Services</a></li>
+                                    <li><a href="#" class="text-muted text-decoration-none">About</a></li>
+                                    <li><a href="#" class="text-muted text-decoration-none">Contact</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-md-3 mb-4">
+                                <h6 class="mb-3">Contact Info</h6>
+                                <p class="text-muted small">
+                                    📧 ${businessData.email}<br/>
+                                    📞 ${businessData.phone}<br/>
+                                    📍 ${businessData.location}
+                                </p>
+                            </div>
+                            <div class="col-md-3 mb-4">
+                                <h6 class="mb-3">Follow Us</h6>
+                                <p class="text-muted small">
+                                    <a href="#" class="text-muted text-decoration-none">Facebook</a> |
+                                    <a href="#" class="text-muted text-decoration-none"> Twitter</a> |
+                                    <a href="#" class="text-muted text-decoration-none"> LinkedIn</a>
+                                </p>
+                            </div>
+                        </div>
+                        <hr class="bg-secondary" />
+                        <div class="row">
+                            <div class="col text-center text-muted small">
+                                <p>&copy; ${year} ${businessData.name}. All rights reserved.</p>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            `;
+        }
+
+        function renderHome() {
+            return `
+                <main>
+                    <section class="py-5" style="background: linear-gradient(135deg, #1a1a1a 0%, #2d3436 100%); min-height: 500px; display: flex; align-items: center;">
+                        <div class="container">
+                            <div class="row align-items-center">
+                                <div class="col-lg-6 mb-4 mb-lg-0">
+                                    <h1 class="display-4 fw-bold text-light mb-3">
+                                        Welcome to <span style="color: #00d4ff;">SimDrei ComShop</span>
+                                    </h1>
+                                    <p class="lead text-muted mb-4">${businessData.tagline}</p>
+                                    <p class="text-light mb-4">Experience premium gaming at our state-of-the-art internet café.</p>
+                                    <div class="d-flex gap-3">
+                                        <button class="btn btn-info btn-lg" onclick="changePage('stations')">Browse Stations</button>
+                                        <button class="btn btn-outline-light btn-lg" onclick="changePage('contact')">Book Now</button>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 text-center">
+                                    <div style="font-size: 8rem;">🎮</div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="py-5 border-bottom border-secondary">
+                        <div class="container">
+                            <div class="row mb-5">
+                                <div class="col text-center">
+                                    <h2 class="display-5 fw-bold text-light mb-3">About SimDrei ComShop</h2>
+                                    <p class="lead text-muted">Your Premier Gaming & Productivity Hub</p>
+                                </div>
+                            </div>
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <div class="card bg-dark border-secondary h-100">
+                                        <div class="card-body">
+                                            <h5 class="text-info mb-3">🎯 Our Mission</h5>
+                                            <p class="text-light">${businessData.description}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card bg-dark border-secondary h-100">
+                                        <div class="card-body">
+                                            <h5 class="text-info mb-3">⭐ Why Choose Us</h5>
+                                            <ul class="text-light">
+                                                <li>Latest Gaming Hardware</li>
+                                                <li>Ultra-Fast Gigabit Internet</li>
+                                                <li>Flexible Pricing Plans</li>
+                                                <li>24/7 Professional Support</li>
+                                                <li>Regular Gaming Events</li>
+                                                <li>Food & Beverage Service</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="py-5 bg-dark border-bottom border-secondary">
+                        <div class="container">
+                            <div class="row text-center g-4">
+                                <div class="col-md-3 col-sm-6 mb-4">
+                                    <h3 class="display-6 text-info fw-bold">30+</h3>
+                                    <p class="text-muted">Gaming Stations</p>
+                                </div>
+                                <div class="col-md-3 col-sm-6 mb-4">
+                                    <h3 class="display-6 text-info fw-bold">5K+</h3>
+                                    <p class="text-muted">Active Members</p>
+                                </div>
+                                <div class="col-md-3 col-sm-6 mb-4">
+                                    <h3 class="display-6 text-info fw-bold">6+</h3>
+                                    <p class="text-muted">Years in Business</p>
+                                </div>
+                                <div class="col-md-3 col-sm-6 mb-4">
+                                    <h3 class="display-6 text-info fw-bold">24/7</h3>
+                                    <p class="text-muted">Open Daily</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="py-5">
+                        <div class="container">
+                            <div class="row mb-5">
+                                <div class="col text-center">
+                                    <h2 class="display-5 fw-bold text-light mb-3">What Our Gamers Say</h2>
+                                    <p class="lead text-muted">Real feedback from real gamers</p>
+                                </div>
+                            </div>
+                            <div class="row g-4">
+                                ${testimonials.map(t => `
+                                    <div class="col-md-6 col-lg-3">
+                                        <div class="card bg-dark border-secondary">
+                                            <div class="card-body">
+                                                <p class="text-warning mb-2">${'⭐'.repeat(t.rating)}</p>
+                                                <p class="text-muted mb-3">"${t.message}"</p>
+                                                <p class="mb-0 text-light fw-bold">${t.name}</p>
+                                                <p class="text-secondary small">${t.role}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </section>
+                </main>
+            `;
+        }
+
+        function renderStations() {
+            return `
+                <main class="py-5">
+                    <div class="container">
+                        <div class="row mb-5">
+                            <div class="col text-center">
+                                <h1 class="display-4 fw-bold text-light mb-3">Gaming Stations</h1>
+                                <p class="lead text-muted">Choose from our variety of high-performance gaming stations</p>
+                            </div>
+                        </div>
+                        <div class="row g-4">
+                            ${stations.map(s => `
+                                <div class="col-lg-6">
+                                    <div class="card bg-dark border-secondary">
+                                        <div class="card-body">
+                                            <h5 class="card-title text-light">🎮 ${s.name}</h5>
+                                            <p class="text-muted small">${s.specs}</p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <span class="h5 text-success mb-0">${s.price}</span>
+                                                <span class="badge bg-success">Available</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </main>
+            `;
+        }
+
+        function renderServices() {
+            return `
+                <main class="py-5">
+                    <div class="container">
+                        <div class="row mb-5">
+                            <div class="col text-center">
+                                <h1 class="display-4 fw-bold text-light mb-3">Packages & Services</h1>
+                                <p class="lead text-muted">Choose the perfect plan for your needs</p>
+                            </div>
+                        </div>
+                        <div class="row g-4 mb-5">
+                            ${services.map(s => `
+                                <div class="col-lg-4 col-md-6">
+                                    <div class="card bg-dark border-secondary h-100">
+                                        <div class="card-body text-center">
+                                            <div style="font-size: 3rem; margin-bottom: 1rem;">${s.icon}</div>
+                                            <h5 class="card-title text-light">${s.name}</h5>
+                                            <p class="text-success fw-bold">${s.price}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </main>
+            `;
+        }
+
+        function renderTeam() {
+            return `
+                <main class="py-5">
+                    <div class="container">
+                        <div class="row mb-5">
+                            <div class="col text-center">
+                                <h1 class="display-4 fw-bold text-light mb-3">Meet Our Team</h1>
+                                <p class="lead text-muted">Passionate professionals dedicated to your experience</p>
+                            </div>
+                        </div>
+                        <div class="row g-4 mb-5">
+                            ${teamMembers.map(m => `
+                                <div class="col-lg-3 col-md-6">
+                                    <div class="card bg-dark border-secondary text-center h-100">
+                                        <div style="height: 200px; background: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%); display: flex; align-items: center; justify-content: center; font-size: 3rem;">👤</div>
+                                        <div class="card-body">
+                                            <h5 class="card-title text-light">${m.name}</h5>
+                                            <p class="text-info fw-bold">${m.title}</p>
+                                            <span class="badge bg-secondary">${m.specialty}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </main>
+            `;
+        }
+
+        function renderContact() {
+            return `
+                <main class="py-5">
+                    <div class="container">
+                        <div class="row mb-5">
+                            <div class="col text-center">
+                                <h1 class="display-4 fw-bold text-light mb-3">Get In Touch</h1>
+                                <p class="lead text-muted">Contact us or book your gaming session</p>
+                            </div>
+                        </div>
+
+                        <div class="row g-4 mb-5">
+                            <div class="col-md-4">
+                                <div class="p-4 bg-dark rounded border border-secondary text-center">
+                                    <h5 class="text-info mb-3">📍 Location</h5>
+                                    <p class="text-light">${businessData.address}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="p-4 bg-dark rounded border border-secondary text-center">
+                                    <h5 class="text-info mb-3">📧 Email</h5>
+                                    <p class="text-light">${businessData.email}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="p-4 bg-dark rounded border border-secondary text-center">
+                                    <h5 class="text-info mb-3">📞 Phone</h5>
+                                    <p class="text-light">${businessData.phone}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row g-4">
+                            <div class="col-lg-6">
+                                <div class="p-4 bg-dark rounded border border-secondary">
+                                    <h3 class="text-light mb-4">💬 Send us a Message</h3>
+                                    <form onsubmit="handleSubmit(event)">
+                                        <div class="mb-3">
+                                            <label class="form-label text-light">Full Name</label>
+                                            <input type="text" class="form-control bg-secondary border-secondary text-light" name="name" required />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label text-light">Email</label>
+                                            <input type="email" class="form-control bg-secondary border-secondary text-light" name="email" required />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label text-light">Message</label>
+                                            <textarea class="form-control bg-secondary border-secondary text-light" rows="5" name="message" required></textarea>
+                                        </div>
+                                        <button type="submit" class="btn btn-info w-100">Send Message</button>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="p-4 bg-dark rounded border border-secondary h-100">
+                                    <h3 class="text-light mb-4">Business Hours</h3>
+                                    <p class="text-light mb-2"><strong>Monday - Friday:</strong></p>
+                                    <p class="text-muted mb-4">2:00 PM - 2:00 AM</p>
+                                    <p class="text-light mb-2"><strong>Saturday:</strong></p>
+                                    <p class="text-muted mb-4">12:00 PM - 3:00 AM</p>
+                                    <p class="text-light mb-2"><strong>Sunday:</strong></p>
+                                    <p class="text-muted">12:00 PM - 12:00 AM</p>
+                                    <hr class="bg-secondary my-4" />
+                                    <h5 class="text-info mb-3">Special Offers</h5>
+                                    <ul class="text-muted">
+                                        <li>🎉 10% off for first-time members</li>
+                                        <li>👥 Group discounts (5+ people)</li>
+                                        <li>📅 Off-peak rates available</li>
+                                        <li>🏆 Tournament hosting packages</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            `;
+        }
+
+        function render() {
+            let pageContent = '';
+            
+            switch(currentPage) {
+                case 'home': pageContent = renderHome(); break;
+                case 'stations': pageContent = renderStations(); break;
+                case 'services': pageContent = renderServices(); break;
+                case 'team': pageContent = renderTeam(); break;
+                case 'contact': pageContent = renderContact(); break;
+                default: pageContent = renderHome();
+            }
+
+            document.getElementById('root').innerHTML = `
+                <div style="display: flex; flex-direction: column; min-height: 100vh;">
+                    ${renderHeader()}
+                    ${pageContent}
+                    ${renderFooter()}
+                </div>
+            `;
+        }
+
+        function changePage(page) {
+            currentPage = page;
+            render();
+            window.scrollTo(0, 0);
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            event.target.reset();
+        }
+
+        // Initial render
+        render();
+    </script>
+</body>
+</html>
+</body>
+</html>

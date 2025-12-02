@@ -1,0 +1,64 @@
+/* App Component Styles */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #1a1a1a;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.min-vh-100 {
+  min-height: 100vh;
+}
+
+/* Ensure footer stays at bottom */
+main {
+  flex: 1;
+}
+
+/* Section spacing */
+section {
+  scroll-behavior: smooth;
+}
+
+/* Custom link colors for light theme */
+.text-light a {
+  color: #0dcaf0;
+}
+
+.text-light a:hover {
+  color: #0a9fb5;
+}
+
+/* Ensure proper contrast */
+.text-muted {
+  color: #adb5bd !important;
+}
+
+/* Hero section specific styles */
+.bg-gradient {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d3436 100%);
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  section {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+
+  .display-4 {
+    font-size: 1.75rem;
+  }
+
+  .lead {
+    font-size: 1rem;
+  }
+}
